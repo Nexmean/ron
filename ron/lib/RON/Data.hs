@@ -22,6 +22,7 @@ import           Data.Map.Strict (Map, (!?))
 import qualified Data.Map.Strict as Map
 import           GHC.TypeLits (symbolVal)
 
+import           RON.Data.CAS (CAS)
 import           RON.Data.Internal (RChunk' (..), Reduced (..), Reducer,
                                     Reducible (..))
 import           RON.Data.LWW (LwwPerField)
@@ -35,7 +36,8 @@ import qualified RON.UUID as UUID
 
 reducers :: Map UUID Reducer
 reducers = Map.fromList
-    [ mkReducer @LwwPerField
+    [ mkReducer @CAS
+    , mkReducer @LwwPerField
     , mkReducer @RGA
     , mkReducer @Set
     , mkReducer @VersionVector

@@ -8,7 +8,7 @@ import           RON.Internal.Prelude
 import qualified Data.ByteString.Lazy as BSL
 import qualified Data.ByteString.Lazy.Char8 as BSLC
 import           Data.Generics (gcompare)
-import           Data.List.Extra (dropEnd, isPrefixOf, isSuffixOf)
+import           Data.List.Extra (dropEnd, isSuffixOf)
 import qualified Data.Map.Merge.Strict as Map
 import qualified Data.Map.Strict as Map
 import           Hedgehog (Property, property, (===))
@@ -47,7 +47,6 @@ loadCases = do
                         reduceAndCompareChunks chunksIn2 chunksOut2
                     | (obj, (chunksIn2, chunksOut2)) <-
                         Map.assocs $ zipDef [] [] chunksIn1 chunksOut1
-                    , not $ "06" `isPrefixOf` name
                     ]
   where
     commonTestDir = "../gritzko~ron-test"
@@ -71,6 +70,7 @@ reduceAndCompareChunks chunksIn chunksOut =
 prepareChunks :: [Chunk] -> [Chunk]
 prepareChunks = map sortChunkOps . sortBy gcompare
 
+-- TODO chunk ops order matters for RGA!
 sortChunkOps :: Chunk -> Chunk
 sortChunkOps chunk = case chunk of
     Value rc@RChunk{chunkBody} ->

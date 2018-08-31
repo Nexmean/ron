@@ -33,6 +33,7 @@ library:
     - RON.Binary.Serialize
     - RON.Binary.Types
     - RON.Data
+    - RON.Data.CAS
     - RON.Data.Internal
     - RON.Data.LWW
     - RON.Data.RGA

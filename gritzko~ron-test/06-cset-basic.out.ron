@@ -1,14 +1,14 @@
-*cas#test1@2:d!
+*cas#test1@2:1!
 	:0=2
 	@1=1
 
-*cas#test2@2:d!:1,
+*cas#test2@2:1!:1,
 
-*cas#test3@4:d!
+*cas#test3@4:3!
 	:2,
 	@3:1,
 
-*cas#test4@5!@=5
+*cas#test4@5:0!@=5
 
 *cas#test5@5!@=5
 
